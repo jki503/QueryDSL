@@ -1,8 +1,5 @@
-# 예제 도메인 모델
+package study.querydsl.entity;
 
-- Spring Data Jpa 강의와 동일
-
-```java
 import lombok.*;
 
 import javax.persistence.*;
@@ -45,39 +42,3 @@ public class Member {
         this.username = username;
     }
 }
-
-```
-
-```java
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of = {"id", "name"})
-public class Team {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "TEAM_ID")
-    private Long id;
-
-    private String name;
-
-    @OneToMany(mappedBy = "team")
-    private List<Member> members = new ArrayList<>();
-
-    public Team(String name) {
-        this.name = name;
-    }
-
-}
-
-```
