@@ -1,5 +1,9 @@
 package study.querydsl.repository;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+import javax.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -8,13 +12,6 @@ import study.querydsl.dto.MemberSearchCondition;
 import study.querydsl.dto.MemberTeamDto;
 import study.querydsl.entity.Member;
 import study.querydsl.entity.Team;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -52,7 +49,7 @@ class MemberJpaRepositoryTest {
         List<Member> result1 = memberJpaRepository.findAll_Querydsl();
         assertThat(result1).containsExactly(member);
         List<Member> result2 =
-                memberJpaRepository.findByUsername_Querydsl("member1");
+            memberJpaRepository.findByUsername_Querydsl("member1");
         assertThat(result2).containsExactly(member);
     }
 
@@ -80,8 +77,9 @@ class MemberJpaRepositoryTest {
         condition.setTeamName("teamB");
 
         List<MemberTeamDto> result =
-                memberJpaRepository.searchByBuilder(condition);
+            memberJpaRepository.searchByBuilder(condition);
 
         assertThat(result).extracting("username").containsExactly("member4");
     }
+
 }

@@ -19,3 +19,11 @@
 </br>
 
 ## [05. 실무 활용 - 순수 JPA와 Querydsl](./doc/section05.md)
+
+</br>
+
+## [06. 실무 활용 - 스프링 데이터 JPA와 Querydsl](./doc/section06.md)
+
+</br>
+
+## [07. 스프링 데이터 JPA가 제공하는 QueryDsl 기능](./doc/section07.md)
